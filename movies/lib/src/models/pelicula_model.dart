@@ -1,3 +1,8 @@
+//API Key
+//38a229726f7775bfb2a13412bc203940
+//Api token v4
+//eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzOGEyMjk3MjZmNzc3NWJmYjJhMTM0MTJiYzIwMzk0MCIsInN1YiI6IjVkZDZjNWE1M2ZhYmEwMDAxM2Y3NGM5NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.YYDcGpkyOhndOWkDSN1Cvu1dropJnoekWvWlu1P8GGY
+
 class Peliculas {
   List<Pelicula> items = new List();
   Peliculas();
@@ -43,6 +48,7 @@ class Pelicula {
     this.overview,
     this.releaseDate,
   });
+
   Pelicula.fromJsonMap(Map<String, dynamic> json) {
     popularity = json['popularity'] / 1;
     voteCount = json['vote_count'];

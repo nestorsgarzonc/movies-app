@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 class CardSwiper extends StatelessWidget {
@@ -10,7 +11,6 @@ class CardSwiper extends StatelessWidget {
     final _screenSize = MediaQuery.of(context).size;
 
     return Container(
-        child: Container(
       padding: EdgeInsets.only(top: 10.0),
       child: Swiper(
         layout: SwiperLayout.STACK,
@@ -26,9 +26,9 @@ class CardSwiper extends StatelessWidget {
           );
         },
         itemCount: peliculas.length,
-        pagination: SwiperPagination(),
-        control: SwiperControl(),
+        //pagination: SwiperPagination(),
+        //control: SwiperControl(),
       ),
-    ));
+    );
   }
 }
