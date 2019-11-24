@@ -9,6 +9,7 @@ class PeliculasProvider {
   String _url = 'api.themoviedb.org';
   String _language = 'es-LA';
   int _popularesPage = 0;
+  bool _cargando = false;
 
   List<Pelicula> _populares = new List();
 
@@ -32,6 +33,8 @@ class PeliculasProvider {
   }
 
   Future<List<Pelicula>> getEnCinesPopular() async {
+    if (_cargando) return [];
+    _cargando = true;
     _popularesPage++;
 
     final url = Uri.https(_url, '3/movie/popular', {
@@ -42,6 +45,7 @@ class PeliculasProvider {
     final resp = await _procesarRespuesta(url);
     _populares.addAll(resp);
     popularesSink(_populares);
+    _cargando = false;
     return resp;
   }
 
