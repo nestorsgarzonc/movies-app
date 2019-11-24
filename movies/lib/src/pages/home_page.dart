@@ -9,6 +9,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    peliculasProvider.getEnCinesPopular();
     return Scaffold(
         appBar: AppBar(
           centerTitle: false,
@@ -66,13 +67,14 @@ class HomePage extends StatelessWidget {
           SizedBox(
             height: 5.0,
           ),
-          FutureBuilder(
-              future: peliculasProvider.getEnCinesPopular(),
+          StreamBuilder(
+              stream: peliculasProvider.popularesStream,
               builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
                 //snapshot.data?.forEach((p) => print(p.title)); //Si existe data hace for each :O
                 if (snapshot.hasData) {
                   return MovieHorizontal(
                     peliculas: snapshot.data,
+                    siguientePagina: peliculasProvider.getEnCinesPopular,
                   );
                 } else {
                   return Center(child: CircularProgressIndicator());
