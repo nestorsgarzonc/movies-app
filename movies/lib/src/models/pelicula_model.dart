@@ -72,4 +72,11 @@ class Pelicula {
       return 'https://image.tmdb.org/t/p/w500/$posterPath';
     }
   }
+  getBackgroundImg(){
+    if(posterPath==null){
+      return 'http://www.viz.inmersa.co/wp-content/uploads/2016/10/Contenido-no-disponible-05.png';
+    }else{
+      return 'https://image.tmdb.org/t/p/w500/$backdropPath';
+    }
+  }
 }
