@@ -47,7 +47,7 @@ class Actor {
     if (profilePath == null) {
       return 'https://st2.depositphotos.com/9223672/12056/v/950/depositphotos_120568216-stock-illustration-male-face-avatar-logo-template.jpg';
     } else {
-      return 'https://image.tmdb.org/t/p/w500/$posterPath';
+      return 'https://image.tmdb.org/t/p/w500/$profilePath';
     }
   }
 }
