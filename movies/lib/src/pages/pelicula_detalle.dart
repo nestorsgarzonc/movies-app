@@ -52,7 +52,7 @@ class PeliculaDetalle extends StatelessWidget {
             pelicula.getBackgroundImg(),
           ),
           placeholder: AssetImage('assets/img/loading.gif'),
-          fadeInDuration: Duration(microseconds: 150),
+          fadeInDuration: Duration(microseconds: 200),
           fit: BoxFit.cover,
         ),
       ),

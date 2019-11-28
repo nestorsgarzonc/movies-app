@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 class Cast {
   List<Actor> actores = new List();
