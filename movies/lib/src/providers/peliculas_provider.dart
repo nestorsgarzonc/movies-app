@@ -67,4 +67,6 @@ class PeliculasProvider {
     final cast = new Cast.fromJsonList(decodedData['cast']);
     return cast.actores;
   }
+
+  
 }
