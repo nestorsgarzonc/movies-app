@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:movies/src/models/pelicula_model.dart';
+import 'package:movies/src/providers/peliculas_provider.dart';
 
 class DataSearch extends SearchDelegate {
-  String _seleccion = " ";
+  String seleccion = " ";
   final peliculas = [
     'Cap america',
     'Batman',
@@ -13,6 +15,7 @@ class DataSearch extends SearchDelegate {
     'Spiderman',
     'Wonder woman',
   ];
+  final peliculasProvider = new PeliculasProvider();
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -46,15 +49,47 @@ class DataSearch extends SearchDelegate {
     //Resultados
     return Center(
       child: Container(
-        height: 100,
+        height: 100.0,
         color: Colors.blueAccent,
-        width: 100,
-        child: Text(_seleccion),
+        width: 100.0,
+        child: Text(seleccion),
       ),
     );
   }
 
   @override
+  Widget buildSuggestions(BuildContext context) {
+    if (query.isEmpty) {
+      return Container();
+    }
+    return FutureBuilder(
+      future: peliculasProvider.bucarPeliculas(query),
+      builder: (BuildContext context, AsyncSnapshot<List<Pelicula>> snapshot) {
+        if (snapshot.hasData) {
+          final peliculas = snapshot.data;
+          return ListView(
+              children: peliculas.map((pelicula) {
+            return ListTile(
+              leading: FadeInImage(
+                image: NetworkImage(pelicula.getPosterImg()),
+                placeholder: AssetImage('assets/img/no-image.jpg'),
+                width: 50.0,
+                fit: BoxFit.contain,
+              ),
+              title: Text(pelicula.title),
+              subtitle: Text(pelicula.originalTitle),
+            );
+          }).toList()
+          );
+          //TODO: terminar video, minuto 8:00
+        }else {
+          return Center(child: CircularProgressIndicator());
+        }
+      },
+    );
+  }
+
+  /* @override
   Widget buildSuggestions(BuildContext context) {
     final listaSugerida = (query.isEmpty)
         ? peliculasRecientes
@@ -75,5 +110,6 @@ class DataSearch extends SearchDelegate {
         );
       },
     );
-  }
+  } */
+
 }
