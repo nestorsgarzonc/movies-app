@@ -53,6 +53,7 @@ class PeliculaDetalle extends StatelessWidget {
           placeholder: AssetImage('assets/img/loading.gif'),
           fadeInDuration: Duration(microseconds: 200),
           fit: BoxFit.cover,
+          height: 200,
         ),
       ),
     );
