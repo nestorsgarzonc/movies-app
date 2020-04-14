@@ -51,7 +51,7 @@ class PeliculaDetalle extends StatelessWidget {
             pelicula.getBackgroundImg(),
           ),
           placeholder: AssetImage('assets/img/loading.gif'),
-          fadeInDuration: Duration(microseconds: 200),
+          fadeInDuration: Duration(milliseconds: 200),
           fit: BoxFit.cover,
           height: 200,
         ),
@@ -60,7 +60,7 @@ class PeliculaDetalle extends StatelessWidget {
   }
 
   Widget _posterTitulo(BuildContext context, Pelicula pelicula) {
-    pelicula.uniqueId="${pelicula.id}-poster";
+    pelicula.uniqueId = "${pelicula.id}-poster";
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -82,18 +82,18 @@ class PeliculaDetalle extends StatelessWidget {
               children: <Widget>[
                 Text(
                   pelicula.title,
-                  style: Theme.of(context).textTheme.title,
+                  style: Theme.of(context).textTheme.bodyText1,
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(pelicula.originalTitle,
-                    style: Theme.of(context).textTheme.subhead,
+                    style: Theme.of(context).textTheme.subtitle1,
                     overflow: TextOverflow.ellipsis),
                 Row(
                   children: <Widget>[
                     Icon(Icons.star_border),
                     Text(
                       pelicula.voteAverage.toString(),
-                      style: Theme.of(context).textTheme.subhead,
+                      style: Theme.of(context).textTheme.subtitle1,
                     )
                   ],
                 ),
